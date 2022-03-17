@@ -1,0 +1,25 @@
+<?xml version="1.0" encoding="utf-8"?>
+<menu xmlns:android="http://schemas.android.com/apk/res/android"
+    xmlns:tools="http://schemas.android.com/tools"
+    tools:showIn="navigation_view">
+
+    <group android:checkableBehavior="single">
+        <item
+            android:id="@+id/nav_rating"
+            android:iconTint="@color/color_gray"
+            android:icon="@drawable/ic_rating"
+            android:title="@string/rating" />
+        <item
+            android:id="@+id/nav_share"
+            android:iconTint="@color/color_gray"
+            android:icon="@drawable/ic_share"
+            android:title="@string/share" />
+
+        <item
+            android:id="@+id/nav_about"
+            android:iconTint="@color/color_gray"
+            android:icon="@drawable/ic_about"
+            android:title="@string/about" />
+
+    </group>
+</menu>

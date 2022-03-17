@@ -1,0 +1,27 @@
+<?xml version="1.0" encoding="UTF-8"?>
+<project version="4">
+  <component name="DesignSurface">
+    <option name="filePathToZoomLevelMap">
+      <map>
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/background_color_all.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/background_color_doc.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/background_color_excel.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/background_color_pdf.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/background_color_recent.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/background_color_screen.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/background_color_txt.xml" value="0.25833333333333336" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/activity_main.xml" value="0.16576086956521738" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/fragment_document.xml" value="0.2" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/item_home.xml" value="0.264" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/item_home_file.xml" value="0.121875" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/menu/nav_main.xml" value="0.2421875" />
+      </map>
+    </option>
+  </component>
+  <component name="ProjectRootManager" version="2" languageLevel="JDK_11" default="true" project-jdk-name="11" project-jdk-type="JavaSDK">
+    <output url="file://$PROJECT_DIR$/build/classes" />
+  </component>
+  <component name="ProjectType">
+    <option name="id" value="Android" />
+  </component>
+</project>

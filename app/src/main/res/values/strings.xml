@@ -1,0 +1,19 @@
+<resources>
+    <string name="app_name">AllDocument</string>
+    <string name="rating">Rating</string>
+    <string name="share">Share</string>
+    <string name="about">About</string>
+    <string name="open">Open</string>
+    <string name="close">Close</string>
+    <string name="search">Search</string>
+    <string name="document_files">Document Files</string>
+    <string name="all_file">All files</string>
+    <string name="pdf_file">PDF files</string>
+    <string name="word_file">Word files</string>
+    <string name="power_point">Power Point</string>
+    <string name="excel_file">Excel files</string>
+    <string name="text_file">Text files</string>
+    <string name="recent_file">Recent files</string>
+    <string name="favorite_file">Favorite files</string>
+    <string name="screen_shot">Screen shot</string>
+</resources>
