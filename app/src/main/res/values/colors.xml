@@ -20,4 +20,7 @@
     <color name="background_color_recent">#FFFADC</color>
     <color name="background_color_favorite">#FFEDED</color>
     <color name="background_color_screen">#DEF6FF</color>
+    <color name="color_gray_8B8B8B">#8B8B8B</color>
+    <color name="color_gray_E6E6E6">#E6E6E6</color>
+    <color name="color_text_212121">#212121</color>
 </resources>

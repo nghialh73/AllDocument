@@ -2,35 +2,16 @@
 <androidx.constraintlayout.widget.ConstraintLayout xmlns:android="http://schemas.android.com/apk/res/android"
     xmlns:app="http://schemas.android.com/apk/res-auto"
     xmlns:tools="http://schemas.android.com/tools"
+    android:id="@+id/main_view"
     android:layout_width="match_parent"
-    android:clickable="true"
     android:layout_height="match_parent"
     android:background="@color/color_white">
 
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/img_search"
-        app:srcCompat="@drawable/ic_search"
-        android:padding="@dimen/_14sdp"
-        app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:visibility="gone"
-        android:layout_width="?attr/actionBarSize"
-        android:layout_height="?attr/actionBarSize"/>
-
-    <androidx.appcompat.widget.AppCompatImageView
-        android:id="@+id/searchImg_filter"
-        app:srcCompat="@drawable/ic_filter"
-        android:padding="@dimen/_14sdp"
-        app:layout_constraintEnd_toEndOf="parent"
-        app:layout_constraintTop_toTopOf="parent"
-        android:layout_width="?attr/actionBarSize"
-        android:visibility="gone"
-        android:layout_height="?attr/actionBarSize"/>
-
     <RelativeLayout
-        android:id="@+id/searchSearchBar"
+        android:id="@+id/searchBar"
         android:layout_width="match_parent"
         android:layout_height="@dimen/_37sdp"
+        android:layout_margin="@dimen/_5sdp"
         app:layout_constraintTop_toTopOf="parent">
 
         <androidx.appcompat.widget.AppCompatImageView
@@ -42,47 +23,57 @@
             app:srcCompat="@drawable/ic_search" />
 
         <androidx.appcompat.widget.AppCompatEditText
-            android:id="@+id/search_edt"
+            android:id="@+id/edt_search"
             android:layout_width="match_parent"
             android:layout_height="match_parent"
             android:layout_marginStart="0dp"
             android:layout_marginLeft="0dp"
             android:layout_marginEnd="0dp"
             android:layout_marginRight="0dp"
-            android:layout_toStartOf="@+id/searchImg_reload"
-            android:layout_toLeftOf="@+id/searchImg_reload"
             android:layout_toEndOf="@+id/home_img_search"
             android:layout_toRightOf="@+id/home_img_search"
             android:background="@color/color_white"
-            android:hint="@string/click_to_search"
+            android:clickable="true"
+            android:focusable="false"
+            android:hint="@string/search"
             android:imeOptions="actionSearch"
             android:inputType="text"
             android:lines="1"
             android:paddingStart="@dimen/_10sdp"
             android:paddingEnd="@dimen/_10sdp"
             android:textSize="14sp" />
+    </RelativeLayout>
 
-        <androidx.appcompat.widget.AppCompatImageView
-            android:id="@+id/searchImg_reload"
-            android:layout_width="@dimen/_37sdp"
-            android:layout_height="@dimen/_37sdp"
-            android:layout_alignParentEnd="true"
-            android:layout_alignParentRight="true"
-            android:padding="@dimen/_11sdp"
-            android:scaleType="fitCenter"
-            app:srcCompat="@drawable/ic_refresh" />
+    <RelativeLayout
+        android:id="@+id/home_rll_layout_control"
+        android:layout_width="match_parent"
+        android:layout_height="@dimen/_37sdp"
+        android:layout_margin="@dimen/_5sdp"
+        app:layout_constraintEnd_toEndOf="parent"
+        app:layout_constraintStart_toStartOf="parent"
+        app:layout_constraintTop_toBottomOf="@+id/searchBar">
+
+        <TextView
+            android:layout_width="match_parent"
+            android:layout_height="match_parent"
+            android:gravity="center_vertical"
+            android:paddingLeft="@dimen/_10sdp"
+            android:text="@string/document_files"
+            android:textColor="@color/color_title"
+            android:textSize="16sp"
+            android:textStyle="bold" />
     </RelativeLayout>
 
     <androidx.recyclerview.widget.RecyclerView
-        android:id="@+id/search_rcv"
+        android:id="@+id/rcv_files"
         android:layout_width="match_parent"
+        android:layout_height="0dp"
+        android:scrollbars="vertical"
         app:layoutManager="androidx.recyclerview.widget.GridLayoutManager"
         app:layout_constraintBottom_toBottomOf="parent"
         app:layout_constraintEnd_toEndOf="parent"
-        android:scrollbars="vertical"
         app:layout_constraintStart_toStartOf="parent"
-        app:layout_constraintTop_toBottomOf="@+id/searchSearchBar"
-        tools:listitem=""
-        android:layout_height="0dp" />
+        app:layout_constraintTop_toBottomOf="@+id/home_rll_layout_control"
+        tools:listitem="" />
 
 </androidx.constraintlayout.widget.ConstraintLayout>

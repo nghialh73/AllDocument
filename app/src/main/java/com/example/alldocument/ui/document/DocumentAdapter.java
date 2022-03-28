@@ -32,7 +32,7 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.Docume
         @NonNull
         @Override
         public DocumentAdapter.DocumentViewHolder onCreateViewHolder(@NonNull ViewGroup parent, int viewType) {
-            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_home, parent, false);
+            View view = LayoutInflater.from(parent.getContext()).inflate(R.layout.item_document, parent, false);
             return new DocumentAdapter.DocumentViewHolder(view);
         }
 
@@ -59,10 +59,10 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.Docume
         class DocumentViewHolder extends RecyclerView.ViewHolder {
             @BindView(R.id.img_icon)
             AppCompatImageView icon;
-            @BindView(R.id.tv_count)
-            AppCompatTextView count;
             @BindView(R.id.tv_name)
             AppCompatTextView name;
+            @BindView(R.id.tv_time)
+            AppCompatTextView time;
 
             public DocumentViewHolder(@NonNull View itemView) {
                 super(itemView);
@@ -70,9 +70,31 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.Docume
             }
 
             void bindView(FileModel fileModel) {
-//                icon.setImageResource(homeItem.getIcon());
-//                icon.setBackgroundResource(homeItem.getBackground());
-//                name.setText(new StringBuilder().append(homeItem.getName()).append("(").append(homeItem.getCount()).append(")").toString());
+                icon.setImageResource(fileModel.i);
+                holder.search_item_name.text = "${arrFilterList[position].name}"
+                when (mPosition) {
+                    6 -> {
+                        var time = TimeUtils.convertLongToTime(arrFilterList[position].time_last_open)
+                        holder.search_item_timeAdded.text =
+                                context.getString(R.string.last_open) + ": $time"
+                    }
+                    0, 1, 2, 3, 4, 5, 7 -> {
+                        var time = TimeUtils.convertLongToTime(arrFilterList[position].timeAdded)
+                        holder.search_item_timeAdded.text =
+                                context.getString(R.string.time_added) + ": $time"
+                    }
+                }
+
+                if (arrFilterList[position].isFavourite)
+                    holder.search_item_favourite.setImageResource(R.drawable.ic_favourited)
+                else
+                    holder.search_item_favourite.setImageResource(R.drawable.ic_not_favourite)
+
+                holder.search_item_favourite.setOnClickListener {
+                    arrFilterList[position].isFavourite = !arrFilterList[position].isFavourite
+                    notifyItemChanged(position)
+                    callBackClickFavorite.changeFavorite(arrFilterList[position])
+                }
 
             }
         }

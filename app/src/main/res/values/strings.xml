@@ -16,4 +16,5 @@
     <string name="recent_file">Recent files</string>
     <string name="favorite_file">Favorite files</string>
     <string name="screen_shot">Screen shot</string>
+    <string name="click_to_search">Click to seach</string>
 </resources>

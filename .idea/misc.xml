@@ -15,6 +15,15 @@
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/item_home.xml" value="0.264" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/item_home_file.xml" value="0.121875" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/menu/nav_main.xml" value="0.2421875" />
+        <entry key="app/src/main/res/drawable/background_color_doc.xml" value="0.33796296296296297" />
+        <entry key="app/src/main/res/drawable/ic_favorite_none.xml" value="0.33796296296296297" />
+        <entry key="app/src/main/res/drawable/ic_filter.xml" value="0.33796296296296297" />
+        <entry key="app/src/main/res/drawable/ic_rating.xml" value="0.33796296296296297" />
+        <entry key="app/src/main/res/drawable/ic_refresh.xml" value="0.33796296296296297" />
+        <entry key="app/src/main/res/layout/activity_main.xml" value="0.28396739130434784" />
+        <entry key="app/src/main/res/layout/fragment_document.xml" value="0.28396739130434784" />
+        <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28396739130434784" />
+        <entry key="app/src/main/res/layout/item_document.xml" value="0.28396739130434784" />
       </map>
     </option>
   </component>
