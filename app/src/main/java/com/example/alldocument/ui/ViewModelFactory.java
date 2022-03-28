@@ -3,13 +3,13 @@ package com.example.alldocument.ui;
 import android.app.Application;
 
 import androidx.annotation.NonNull;
-import androidx.lifecycle.AndroidViewModel;
 import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.alldocument.FileApplication;
 import com.example.alldocument.data.repository.DataRepository;
 import com.example.alldocument.ui.document.DocumentViewModel;
+import com.example.alldocument.ui.home.HomeViewModel;
 
 public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
 
@@ -27,6 +27,12 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
         @Override
         @NonNull
         public <T extends ViewModel> T create(@NonNull Class<T> modelClass) {
-            return (T) new DocumentViewModel(mApplication, mRepository);
+            if (modelClass.isAssignableFrom(HomeViewModel.class)) {
+               return (T) new HomeViewModel(mApplication, mRepository);
+            }
+            else if (modelClass.isAssignableFrom(HomeViewModel.class)) {
+                return (T) new DocumentViewModel(mApplication);
+            }
+            else throw new IllegalArgumentException("Unknown ViewModel class");
         }
     }

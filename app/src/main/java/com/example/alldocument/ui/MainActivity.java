@@ -1,9 +1,7 @@
 package com.example.alldocument.ui;
 
-import android.app.FragmentManager;
 import android.content.ActivityNotFoundException;
 import android.content.Intent;
-import android.content.SharedPreferences;
 import android.content.pm.PackageManager;
 import android.net.Uri;
 import android.os.Build;
@@ -11,7 +9,6 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
-import android.widget.CompoundButton;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -20,14 +17,12 @@ import androidx.annotation.RequiresApi;
 import androidx.appcompat.app.ActionBar;
 import androidx.appcompat.app.ActionBarDrawerToggle;
 import androidx.appcompat.app.AppCompatActivity;
-import androidx.appcompat.widget.SwitchCompat;
 import androidx.appcompat.widget.Toolbar;
 import androidx.drawerlayout.widget.DrawerLayout;
-import androidx.fragment.app.FragmentActivity;
 import androidx.fragment.app.FragmentTransaction;
 
 import com.example.alldocument.R;
-import com.example.alldocument.ui.document.DocumentFragment;
+import com.example.alldocument.ui.home.HomeFragment;
 import com.example.alldocument.utils.PermissionUtils;
 import com.google.android.material.navigation.NavigationView;
 
@@ -44,7 +39,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     DrawerLayout mDrawerLayout;
     @BindView(R.id.navView)
     NavigationView mNavigationView;
-    private DocumentFragment documentFragment;
+    private HomeFragment homeFragment;
     private ActionBarDrawerToggle mToggle;
 
     @RequiresApi(api = Build.VERSION_CODES.M)
@@ -53,19 +48,23 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onCreate(savedInstanceState);
         setContentView(R.layout.activity_main);
         ButterKnife.bind(this);
-        documentFragment = DocumentFragment.newInstance();
+        homeFragment = HomeFragment.newInstance();
         initView();
         setupDrawerLayout();
     }
 
     private void initView() {
         setupToolbar();
-        replaceFragment();
+        if (!PermissionUtils.checkPermission(this)) {
+            PermissionUtils.requestPermission(this);
+        } else {
+            replaceFragment();
+        }
     }
 
     private  void replaceFragment() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
-        ft.replace(R.id.fr_container, documentFragment);
+        ft.replace(R.id.fr_container, homeFragment);
         ft.addToBackStack(null);
         ft.commit();
     }

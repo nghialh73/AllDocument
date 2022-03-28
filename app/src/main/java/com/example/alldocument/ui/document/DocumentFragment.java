@@ -1,19 +1,14 @@
 package com.example.alldocument.ui.document;
 
-import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
-import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
-import android.widget.ProgressBar;
-import android.widget.TextView;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
-import androidx.lifecycle.Observer;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -21,27 +16,24 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.alldocument.R;
 import com.example.alldocument.data.model.FileModel;
 import com.example.alldocument.data.model.HomeItem;
-import com.example.alldocument.data.model.HomeItemType;
 import com.example.alldocument.ui.ViewModelFactory;
+import com.example.alldocument.ui.home.HomeAdapter;
+import com.example.alldocument.ui.home.HomeFragment;
+import com.example.alldocument.ui.home.HomeViewModel;
 import com.example.alldocument.utils.PermissionUtils;
 
 import java.util.ArrayList;
 import java.util.List;
-import java.util.Objects;
 
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
 public class DocumentFragment extends Fragment {
-    @BindView(R.id.rcv_files)
-    RecyclerView rcv_all_pdf;
-    @BindView(R.id.edt_search)
-    AppCompatEditText edt_search;
 
     private DocumentViewModel viewModel;
     private GridLayoutManager gridLayoutManager;
     private DocumentAdapter documentAdapter;
-    private List<HomeItem> homeItems = new ArrayList<>();
+    private List<FileModel> fileModels = new ArrayList<>();
 
     public static DocumentFragment newInstance() {
         return new DocumentFragment();
@@ -53,135 +45,22 @@ public class DocumentFragment extends Fragment {
         ButterKnife.bind(this, view);
         ViewModelFactory factory = new ViewModelFactory(requireActivity().getApplication());
         viewModel = new ViewModelProvider(requireActivity(), factory).get(DocumentViewModel.class);
-        initData();
+
+        //initData();
         gridLayoutManager = new GridLayoutManager(requireActivity(), 3);
-        documentAdapter = new DocumentAdapter(requireActivity(), homeItems);
-        rcv_all_pdf.setAdapter(documentAdapter);
-        rcv_all_pdf.setLayoutManager(gridLayoutManager);
+        documentAdapter = new DocumentAdapter(requireActivity(), fileModels);
+        //rcv_all_pdf.setAdapter(homeAdapter);
+        //rcv_all_pdf.setLayoutManager(gridLayoutManager);
         return view;
     }
 
     @Override
     public void onViewCreated(@NonNull View view, @Nullable Bundle savedInstanceState) {
         super.onViewCreated(view, savedInstanceState);
-        if (!PermissionUtils.checkPermission(getActivity())) {
-            PermissionUtils.requestPermission(requireActivity());
-        } else {
-            loadData();
-        }
-    }
-
-    private void loadData() {
-        viewModel.getAllData().observe(getViewLifecycleOwner(), fileModels -> {
-            if (fileModels != null) {
-                documentAdapter.updateItemCount(fileModels.size(), 0);
-            }
-        });
-        viewModel.getPDFData().observe(getViewLifecycleOwner(), fileModels -> {
-            if (fileModels != null) {
-                documentAdapter.updateItemCount(fileModels.size(), 1);
-            }
-        });
-        viewModel.getWordData().observe(getViewLifecycleOwner(), fileModels -> {
-            if (fileModels != null) {
-                documentAdapter.updateItemCount(fileModels.size(), 2);
-            }
-        });
-        viewModel.getPowerPointData().observe(getViewLifecycleOwner(), fileModels -> {
-            if (fileModels != null) {
-                documentAdapter.updateItemCount(fileModels.size(), 3);
-            }
-        });
-        viewModel.getExcelData().observe(getViewLifecycleOwner(), fileModels -> {
-            if (fileModels != null) {
-                documentAdapter.updateItemCount(fileModels.size(), 4);
-            }
-        });
-        viewModel.getTextData().observe(getViewLifecycleOwner(), fileModels -> {
-            if (fileModels != null) {
-                documentAdapter.updateItemCount(fileModels.size(), 5);
-            }
-        });
-        viewModel.getRecentData().observe(getViewLifecycleOwner(), fileModels -> {
-            if (fileModels != null) {
-                documentAdapter.updateItemCount(fileModels.size(), 6);
-            }
-        });
-        viewModel.getFavoriteData().observe(getViewLifecycleOwner(), fileModels -> {
-            if (fileModels != null) {
-                documentAdapter.updateItemCount(fileModels.size(), 7);
-            }
-        });
-        viewModel.getImageData().observe(getViewLifecycleOwner(), fileModels -> {
-            if (fileModels != null) {
-                documentAdapter.updateItemCount(fileModels.size(), 8);
-            }
-        });
-    }
-
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-        if (requestCode == PermissionUtils.ID_PERMISSIONS_REQUEST) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //fileAsyncTask.execute();
-            }
-        }
-    }
-
-    private void initData() {
-        homeItems.add(new HomeItem(
-                requireActivity().getString(R.string.all_file),
-                HomeItemType.ALL,
-                R.drawable.ic_all,
-                R.drawable.background_color_all, 0
-        ));
-        homeItems.add(new HomeItem(
-                requireActivity().getString(R.string.pdf_file),
-                HomeItemType.PDF,
-                R.drawable.ic_pdf,
-                R.drawable.background_color_pdf, 0
-        ));
-        homeItems.add(new HomeItem(
-                requireActivity().getString(R.string.word_file),
-                HomeItemType.WORD,
-                R.drawable.ic_doc,
-                R.drawable.background_color_doc, 0
-        ));
-        homeItems.add(new HomeItem(
-                requireActivity().getString(R.string.power_point),
-                HomeItemType.POWER_POINT,
-                R.drawable.ic_ppt,
-                R.drawable.background_color_ppt, 0
-        ));
-        homeItems.add(new HomeItem(
-                requireActivity().getString(R.string.excel_file),
-                HomeItemType.EXCEL,
-                R.drawable.ic_xls,
-                R.drawable.background_color_excel, 0
-        ));
-        homeItems.add(new HomeItem(
-                requireActivity().getString(R.string.text_file),
-                HomeItemType.TEXT,
-                R.drawable.ic_txt,
-                R.drawable.background_color_txt, 0
-        ));
-        homeItems.add(new HomeItem(
-                requireActivity().getString(R.string.recent_file),
-                HomeItemType.RECENT,
-                R.drawable.ic_recent,
-                R.drawable.background_color_recent, 0
-        ));
-        homeItems.add(new HomeItem(
-                requireActivity().getString(R.string.favorite_file),
-                HomeItemType.FAVORITE,
-                R.drawable.ic_favourite,
-                R.drawable.background_color_favorite, 0
-        ));
-        homeItems.add(new HomeItem(
-                requireActivity().getString(R.string.screen_shot),
-                HomeItemType.SCREEN,
-                R.drawable.ic_jpg,
-                R.drawable.background_color_screen, 0
-        ));
+//        if (!PermissionUtils.checkPermission(getActivity())) {
+//            PermissionUtils.requestPermission(requireActivity());
+//        } else {
+//            loadData();
+//        }
     }
 }
