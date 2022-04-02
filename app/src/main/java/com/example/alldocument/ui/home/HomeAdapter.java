@@ -20,12 +20,14 @@ import butterknife.ButterKnife;
 
 public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder> {
 
-    List<HomeItem> items;
-    Context context;
+    private List<HomeItem> items;
+    private Context context;
+    private HomeAdapterOnItemClickListener mListener;
 
-    public HomeAdapter(Context context, List<HomeItem> homeItems) {
+    public HomeAdapter(Context context, List<HomeItem> homeItems, HomeAdapterOnItemClickListener listener) {
         this.items = homeItems;
         this.context = context;
+        this.mListener = listener;
     }
 
     @NonNull
@@ -37,8 +39,8 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
 
     @Override
     public void onBindViewHolder(@NonNull HomeAdapter.HomeViewHolder holder, int position) {
-        holder.bindView(items.get(position));
-
+        holder.bindView(items.get(holder.getAdapterPosition()));
+        holder.itemView.setOnClickListener(v -> mListener.onItemClick(items.get(holder.getAdapterPosition()), holder.getAdapterPosition()));
     }
 
     @Override
@@ -74,5 +76,9 @@ public class HomeAdapter extends RecyclerView.Adapter<HomeAdapter.HomeViewHolder
             name.setText(new StringBuilder().append(homeItem.getName()).append("(").append(homeItem.getCount()).append(")").toString());
 
         }
+    }
+
+    public interface HomeAdapterOnItemClickListener {
+        public void onItemClick(HomeItem homeItem, int position);
     }
 }

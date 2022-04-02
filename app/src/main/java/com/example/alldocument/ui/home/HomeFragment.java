@@ -10,6 +10,8 @@ import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
 import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
+import androidx.fragment.app.FragmentManager;
+import androidx.fragment.app.FragmentTransaction;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
@@ -18,6 +20,7 @@ import com.example.alldocument.R;
 import com.example.alldocument.data.model.HomeItem;
 import com.example.alldocument.data.model.HomeItemType;
 import com.example.alldocument.ui.ViewModelFactory;
+import com.example.alldocument.ui.document.DocumentFragment;
 import com.example.alldocument.utils.PermissionUtils;
 
 import java.util.ArrayList;
@@ -26,7 +29,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class HomeFragment extends Fragment {
+public class HomeFragment extends Fragment implements HomeAdapter.HomeAdapterOnItemClickListener {
     @BindView(R.id.rcv_files)
     RecyclerView rcv_all_pdf;
     @BindView(R.id.edt_search)
@@ -50,7 +53,7 @@ public class HomeFragment extends Fragment {
 
         initData();
         gridLayoutManager = new GridLayoutManager(requireActivity(), 3);
-        homeAdapter = new HomeAdapter(requireActivity(), homeItems);
+        homeAdapter = new HomeAdapter(requireActivity(), homeItems, this);
         rcv_all_pdf.setAdapter(homeAdapter);
         rcv_all_pdf.setLayoutManager(gridLayoutManager);
         return view;
@@ -178,6 +181,16 @@ public class HomeFragment extends Fragment {
                 R.drawable.ic_jpg,
                 R.drawable.background_color_screen, 0
         ));
+    }
+
+    @Override
+    public void onItemClick(HomeItem homeItem, int position) {
+        DocumentFragment fragment = DocumentFragment.newInstance(homeItem.getType());
+        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
+        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
+        fragmentTransaction.add(R.id.fr_container, fragment);
+        fragmentTransaction.addToBackStack(null);
+        fragmentTransaction.commit();
     }
 
     /*protected void openFileDetail(FileModel fileModel) {

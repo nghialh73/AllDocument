@@ -7,6 +7,7 @@ import androidx.lifecycle.ViewModel;
 import androidx.lifecycle.ViewModelProvider;
 
 import com.example.alldocument.FileApplication;
+import com.example.alldocument.data.model.HomeItemType;
 import com.example.alldocument.data.repository.DataRepository;
 import com.example.alldocument.ui.document.DocumentViewModel;
 import com.example.alldocument.ui.home.HomeViewModel;
@@ -30,8 +31,8 @@ public class ViewModelFactory extends ViewModelProvider.NewInstanceFactory {
             if (modelClass.isAssignableFrom(HomeViewModel.class)) {
                return (T) new HomeViewModel(mApplication, mRepository);
             }
-            else if (modelClass.isAssignableFrom(HomeViewModel.class)) {
-                return (T) new DocumentViewModel(mApplication);
+            else if (modelClass.isAssignableFrom(DocumentViewModel.class)) {
+                return (T) new DocumentViewModel(mApplication, mRepository);
             }
             else throw new IllegalArgumentException("Unknown ViewModel class");
         }

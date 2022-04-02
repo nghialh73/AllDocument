@@ -7,11 +7,13 @@ import androidx.room.Entity;
 import androidx.room.Ignore;
 import androidx.room.PrimaryKey;
 
+import com.example.alldocument.R;
+
 import java.io.File;
 import java.io.Serializable;
 
 @Entity(tableName = "pdf_table")
-public class FileModel implements Serializable{
+public class FileModel implements Serializable {
     @NonNull
     @PrimaryKey()
     private String path;
@@ -23,8 +25,10 @@ public class FileModel implements Serializable{
     private long updateAt;
     private int page = 1;
     private HomeItemType type;
+    private int icon;
     @Ignore
     private transient Bitmap avatar;
+
     public FileModel() {
     }
 
@@ -112,6 +116,30 @@ public class FileModel implements Serializable{
 
     public void setAvatar(Bitmap avatar) {
         this.avatar = avatar;
+    }
+
+    public HomeItemType getType() {
+        return type;
+    }
+
+    public void setType(HomeItemType type) {
+        this.type = type;
+    }
+
+    public int getIcon() {
+        switch (type) {
+            case PDF:
+                return R.drawable.ic_pdf;
+            case WORD:
+                return R.drawable.ic_doc;
+
+            case POWER_POINT:
+                return R.drawable.ic_ppt;
+            case EXCEL:
+                return R.drawable.ic_xls;
+            default:
+                return R.drawable.ic_txt;
+        }
     }
 }
 
