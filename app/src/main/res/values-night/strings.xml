@@ -1,4 +1,6 @@
 <?xml version="1.0" encoding="utf-8"?>
 <resources>
     <string name="click_to_search">Click to seach</string>
+    <string name="title_ok">OK</string>
+    <string name="title_cancel">Cancel</string>
 </resources>
