@@ -34,7 +34,7 @@ public class FileRepository {
         if (sInstance == null) {
             synchronized (DataRepository.class) {
                 if (sInstance == null) {
-                    sInstance = new FileRepository(context,appExecutors);
+                    sInstance = new FileRepository(context, appExecutors);
                 }
             }
         }
@@ -77,10 +77,11 @@ public class FileRepository {
                 String path = c.getString(0);
                 long size = c.getLong(1);
                 long timeAdded = c.getLong(2);
-                String name = c.getString(3);
+                String name = path.substring(path.lastIndexOf("/") + 1);
                 long timeModified = c.getLong(4);
                 listFile.add(
                         new FileModel(path, name, size, timeAdded, timeModified, type)
+
                 );
             }
             c.close();

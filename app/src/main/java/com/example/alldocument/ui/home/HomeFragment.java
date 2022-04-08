@@ -1,5 +1,6 @@
 package com.example.alldocument.ui.home;
 
+import android.content.Intent;
 import android.content.pm.PackageManager;
 import android.os.Bundle;
 import android.view.LayoutInflater;
@@ -20,6 +21,7 @@ import com.example.alldocument.R;
 import com.example.alldocument.data.model.HomeItem;
 import com.example.alldocument.data.model.HomeItemType;
 import com.example.alldocument.ui.ViewModelFactory;
+import com.example.alldocument.ui.document.DocumentActivity;
 import com.example.alldocument.ui.document.DocumentFragment;
 import com.example.alldocument.utils.PermissionUtils;
 
@@ -50,7 +52,6 @@ public class HomeFragment extends Fragment implements HomeAdapter.HomeAdapterOnI
         ButterKnife.bind(this, view);
         ViewModelFactory factory = new ViewModelFactory(requireActivity().getApplication());
         viewModel = new ViewModelProvider(requireActivity(), factory).get(HomeViewModel.class);
-
         initData();
         gridLayoutManager = new GridLayoutManager(requireActivity(), 3);
         homeAdapter = new HomeAdapter(requireActivity(), homeItems, this);
@@ -117,15 +118,6 @@ public class HomeFragment extends Fragment implements HomeAdapter.HomeAdapterOnI
         });
     }
 
-    @Override
-    public void onRequestPermissionsResult(int requestCode, @NonNull String permissions[], @NonNull int[] grantResults) {
-        if (requestCode == PermissionUtils.ID_PERMISSIONS_REQUEST) {
-            if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //fileAsyncTask.execute();
-            }
-        }
-    }
-
     private void initData() {
         homeItems.add(new HomeItem(
                 requireActivity().getString(R.string.all_file),
@@ -185,12 +177,12 @@ public class HomeFragment extends Fragment implements HomeAdapter.HomeAdapterOnI
 
     @Override
     public void onItemClick(HomeItem homeItem, int position) {
-        DocumentFragment fragment = DocumentFragment.newInstance(homeItem.getType());
-        FragmentManager fragmentManager = requireActivity().getSupportFragmentManager();
-        FragmentTransaction fragmentTransaction = fragmentManager.beginTransaction();
-        fragmentTransaction.add(R.id.fr_container, fragment);
-        fragmentTransaction.addToBackStack(null);
-        fragmentTransaction.commit();
+        Intent intent = new Intent(requireActivity(), DocumentActivity.class);
+        Bundle bundle = new Bundle();
+        bundle.putSerializable(DocumentActivity.HOME_TYPE_ITEM_KEY, homeItem.getType());
+        bundle.putString(DocumentActivity.NAME_ITEM_KEY, homeItem.getName());
+        intent.putExtras(bundle);
+        startActivity(intent);
     }
 
     /*protected void openFileDetail(FileModel fileModel) {

@@ -3,6 +3,7 @@
   <component name="DesignSurface">
     <option name="filePathToZoomLevelMap">
       <map>
+        <entry key="../../../../../../layout/custom_preview.xml" value="0.32314814814814813" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/background_color_all.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/background_color_doc.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/background_color_excel.xml" value="0.25833333333333336" />
@@ -20,6 +21,7 @@
         <entry key="app/src/main/res/drawable/ic_filter.xml" value="0.33796296296296297" />
         <entry key="app/src/main/res/drawable/ic_rating.xml" value="0.33796296296296297" />
         <entry key="app/src/main/res/drawable/ic_refresh.xml" value="0.33796296296296297" />
+        <entry key="app/src/main/res/layout/activity_document.xml" value="0.1734375" />
         <entry key="app/src/main/res/layout/activity_main.xml" value="0.28396739130434784" />
         <entry key="app/src/main/res/layout/fragment_document.xml" value="0.28396739130434784" />
         <entry key="app/src/main/res/layout/fragment_home.xml" value="0.28396739130434784" />

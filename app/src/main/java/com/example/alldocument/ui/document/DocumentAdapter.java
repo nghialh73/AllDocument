@@ -64,8 +64,8 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.Docume
     class DocumentViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.img_icon)
         AppCompatImageView icon;
-        @BindView(R.id.img_favorite)
-        AppCompatImageView imgFavorite;
+//        @BindView(R.id.img_favorite)
+//        AppCompatImageView imgFavorite;
         @BindView(R.id.tv_name)
         AppCompatTextView tvName;
         @BindView(R.id.tv_time)
@@ -81,19 +81,19 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.Docume
             tvName.setText(fileModel.getName());
             String time = TimeUtils.convertLongToTime(fileModel.getDate());
             tvTime.setText(time);
-            if (fileModel.getFavorite() == 1)
-                imgFavorite.setImageResource(R.drawable.ic_favorite);
-            else
-                imgFavorite.setImageResource(R.drawable.ic_favorite_none);
+//            if (fileModel.getFavorite() == 1)
+//                imgFavorite.setImageResource(R.drawable.ic_favorite);
+//            else
+//                imgFavorite.setImageResource(R.drawable.ic_favorite_none);
 
-            imgFavorite.setOnClickListener(new View.OnClickListener() {
-                @Override
-                public void onClick(View v) {
-                    fileModel.setFavorite(fileModel.getFavorite() == 1 ? 0 : 1);
-                    notifyItemChanged(position);
-                    //callBackClickFavorite.changeFavorite(fileModel);
-                }
-            });
+//            imgFavorite.setOnClickListener(new View.OnClickListener() {
+//                @Override
+//                public void onClick(View v) {
+//                    fileModel.setFavorite(fileModel.getFavorite() == 1 ? 0 : 1);
+//                    notifyItemChanged(position);
+//                    //callBackClickFavorite.changeFavorite(fileModel);
+//                }
+//            });
         }
     }
 }

@@ -9,6 +9,7 @@ import android.os.Bundle;
 import android.view.Menu;
 import android.view.MenuInflater;
 import android.view.MenuItem;
+import android.view.View;
 import android.widget.Toast;
 
 import androidx.annotation.NonNull;
@@ -65,7 +66,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
     private  void replaceFragment() {
         FragmentTransaction ft = getSupportFragmentManager().beginTransaction();
         ft.replace(R.id.fr_container, homeFragment);
-        ft.addToBackStack(null);
         ft.commit();
     }
 
@@ -74,7 +74,7 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         super.onRequestPermissionsResult(requestCode, permissions, grantResults);
         if (requestCode == PermissionUtils.ID_PERMISSIONS_REQUEST) {
             if (grantResults.length > 0 && grantResults[0] == PackageManager.PERMISSION_GRANTED) {
-                //   PdfConfig.setUp(this);
+                replaceFragment();
             } else {
                 finish();
             }
@@ -86,10 +86,6 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         mToggle = new ActionBarDrawerToggle(this, mDrawerLayout, mToolbar, R.string.open, R.string.close);
         mDrawerLayout.addDrawerListener(mToggle);
         mNavigationView.setNavigationItemSelectedListener(this);
-
-//        MenuItem menuItem = mNavigationView.getMenu().findItem(R.id.dark_theme); // This is the menu item that contains your switch
-//        drawerSwitch = menuItem.getActionView().findViewById(R.id.switch_dark_mode);
-        //drawerSwitch.setChecked(mPref.getBoolean(DARK_MODE, false) && Build.VERSION.SDK_INT >= Build.VERSION_CODES.LOLLIPOP);
     }
 
     @Override
@@ -163,6 +159,25 @@ public class MainActivity extends AppCompatActivity implements NavigationView.On
         ActionBar actionBar = getSupportActionBar();
         Objects.requireNonNull(actionBar).setDisplayShowTitleEnabled(true);
         actionBar.setHomeButtonEnabled(true);
+    }
+
+    public void updateToolbar(String title, int drawable, boolean isHome){
+        mToolbar.setTitle(title);
+        mToolbar.setNavigationIcon(drawable);
+        updateIconToolbar(isHome);
+    }
+
+    private void updateIconToolbar(boolean isHome) {
+        if(!isHome) {
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_LOCKED_CLOSED);
+            mToggle.setDrawerIndicatorEnabled(true);
+        } else {
+            mDrawerLayout.setDrawerLockMode(DrawerLayout.LOCK_MODE_UNLOCKED);
+            getSupportActionBar().setDisplayHomeAsUpEnabled(false);
+            mToggle.setDrawerIndicatorEnabled(true);
+            mToggle.setToolbarNavigationClickListener(null);
+            //mToolBarNavigationListenerIsRegistered = false;
+        }
     }
 
     @Override
