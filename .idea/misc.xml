@@ -18,11 +18,15 @@
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/ic_add.xml" value="0.1" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/ic_screen_short.xml" value="0.1" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/rounded_border_text_view.xml" value="0.1" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/activity_document.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/activity_main.xml" value="0.16576086956521738" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/activity_pdf_viewer.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/activity_photo_editor.xml" value="0.10104166666666667" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/activity_splash.xml" value="0.2421875" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/color_picker_item_list.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/fragment_control_office.xml" value="0.16983695652173914" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/fragment_document.xml" value="0.2" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/fragment_home.xml" value="0.2421875" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/fragment_main_photo_edit_emoji.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/fragment_main_photo_edit_image.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/fragment_photo_edit_emoji_item_list.xml" value="0.10104166666666667" />
@@ -33,6 +37,7 @@
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/lib_file_item_view.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/lib_pen_setting_dialog.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/lib_select_dialog_singlechoice.xml" value="0.10104166666666667" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/pdf_viewer_acitivty.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/popup_window_add_text.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/menu/nav_main.xml" value="0.2421875" />
         <entry key="app/src/main/res/drawable/background_color_doc.xml" value="0.33796296296296297" />

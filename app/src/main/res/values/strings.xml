@@ -145,4 +145,5 @@
     <string name="dialog_rtf_file">The document is really a RTF file, which is not supported</string>
     <string name="not_support_file">Not support this file.</string>
     <string name="load_file_error">Load file error. Please try again!</string>
+    <string name="loading_data_splash">Loading data, finish to show ads!</string>
 </resources>

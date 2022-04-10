@@ -6,6 +6,8 @@ import static com.example.alldocument.ui.document.DocumentActivity.NAME_ITEM_KEY
 import android.app.Activity;
 import android.content.Intent;
 import android.os.Bundle;
+import android.text.Editable;
+import android.text.TextWatcher;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
@@ -15,6 +17,7 @@ import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
+import androidx.appcompat.widget.AppCompatEditText;
 import androidx.fragment.app.Fragment;
 import androidx.lifecycle.ViewModelProvider;
 import androidx.recyclerview.widget.GridLayoutManager;
@@ -28,6 +31,7 @@ import com.example.alldocument.library.officereader.AppActivity;
 import com.example.alldocument.library.system.FileKit;
 import com.example.alldocument.ui.MainActivity;
 import com.example.alldocument.ui.ViewModelFactory;
+import com.example.alldocument.ui.pdf.PdfViewerActivity;
 
 import java.util.ArrayList;
 import java.util.List;
@@ -35,14 +39,14 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DocumentFragment extends Fragment implements DocumentAdapter.DocumentAdapterOnItemClickListener {
+public class DocumentFragment extends Fragment implements DocumentAdapter.DocumentAdapterOnItemClickListener, TextWatcher {
 
     @BindView(R.id.rcv_document)
     RecyclerView rcv_document;
     @BindView(R.id.progressBar)
     ProgressBar progressBar;
-//    @BindView(R.id.edt_search)
-//    AppCompatEditText edt_search;
+    @BindView(R.id.search_edt)
+    AppCompatEditText search_edt;
 
     private DocumentViewModel viewModel;
     private GridLayoutManager gridLayoutManager;
@@ -65,6 +69,7 @@ public class DocumentFragment extends Fragment implements DocumentAdapter.Docume
         viewModel = new ViewModelProvider(requireActivity(), factory).get(DocumentViewModel.class);
         showLoading();
         initData();
+        search_edt.addTextChangedListener(this);
         gridLayoutManager = new GridLayoutManager(requireActivity(), 3);
         documentAdapter = new DocumentAdapter(requireActivity(), fileModels, this);
         rcv_document.setAdapter(documentAdapter);
@@ -110,11 +115,11 @@ public class DocumentFragment extends Fragment implements DocumentAdapter.Docume
     @Override
     public void onItemClick(FileModel fileModel, int position) {
         if (fileModel.getType() == HomeItemType.PDF) {
-//            (activity as BaseActivity).addFragment(
-//                    PdfViewerFragment.newInstance(it),
-//                    R.id.main_view,
-//                    "PdfViewerFragment"
-//            )
+            Intent intent = new Intent(requireContext(), PdfViewerActivity.class);
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(PdfViewerActivity.PDF_DATA_MODEL, fileModel);
+            intent.putExtras(bundle);
+            startActivity(intent);
         } else if (FileKit.instance().isSupport(fileModel.getName())) {
             Intent intent = new Intent(requireContext(), AppActivity.class);
             intent.putExtra(MainConstant.INTENT_FILED_FILE_PATH, fileModel.getPath());
@@ -129,5 +134,20 @@ public class DocumentFragment extends Fragment implements DocumentAdapter.Docume
             Toast.makeText(requireContext(), getString(R.string.not_support_file), Toast.LENGTH_SHORT)
                     .show();
         }
+    }
+
+    @Override
+    public void beforeTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+
+    }
+
+    @Override
+    public void onTextChanged(CharSequence charSequence, int i, int i1, int i2) {
+        documentAdapter.getFilter().filter(charSequence);
+    }
+
+    @Override
+    public void afterTextChanged(Editable editable) {
+
     }
 }

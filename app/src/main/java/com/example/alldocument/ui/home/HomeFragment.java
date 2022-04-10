@@ -34,8 +34,6 @@ import butterknife.ButterKnife;
 public class HomeFragment extends Fragment implements HomeAdapter.HomeAdapterOnItemClickListener {
     @BindView(R.id.rcv_files)
     RecyclerView rcv_all_pdf;
-    @BindView(R.id.edt_search)
-    AppCompatEditText edt_search;
 
     private HomeViewModel viewModel;
     private GridLayoutManager gridLayoutManager;
