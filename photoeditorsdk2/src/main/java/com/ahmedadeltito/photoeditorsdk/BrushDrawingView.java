@@ -15,9 +15,6 @@ import android.view.View;
 import androidx.annotation.ColorInt;
 import androidx.annotation.NonNull;
 
-/**
- * Created by Ahmed Adel on 5/8/17.
- */
 
 public class BrushDrawingView extends View {
 

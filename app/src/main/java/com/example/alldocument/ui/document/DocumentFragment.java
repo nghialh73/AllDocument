@@ -3,12 +3,15 @@ package com.example.alldocument.ui.document;
 import static com.example.alldocument.ui.document.DocumentActivity.HOME_TYPE_ITEM_KEY;
 import static com.example.alldocument.ui.document.DocumentActivity.NAME_ITEM_KEY;
 
+import android.app.Activity;
+import android.content.Intent;
 import android.os.Bundle;
 import android.view.LayoutInflater;
 import android.view.MenuItem;
 import android.view.View;
 import android.view.ViewGroup;
 import android.widget.ProgressBar;
+import android.widget.Toast;
 
 import androidx.annotation.NonNull;
 import androidx.annotation.Nullable;
@@ -20,6 +23,9 @@ import androidx.recyclerview.widget.RecyclerView;
 import com.example.alldocument.R;
 import com.example.alldocument.data.model.FileModel;
 import com.example.alldocument.data.model.HomeItemType;
+import com.example.alldocument.library.constant.MainConstant;
+import com.example.alldocument.library.officereader.AppActivity;
+import com.example.alldocument.library.system.FileKit;
 import com.example.alldocument.ui.MainActivity;
 import com.example.alldocument.ui.ViewModelFactory;
 
@@ -29,7 +35,7 @@ import java.util.List;
 import butterknife.BindView;
 import butterknife.ButterKnife;
 
-public class DocumentFragment extends Fragment {
+public class DocumentFragment extends Fragment implements DocumentAdapter.DocumentAdapterOnItemClickListener {
 
     @BindView(R.id.rcv_document)
     RecyclerView rcv_document;
@@ -60,7 +66,7 @@ public class DocumentFragment extends Fragment {
         showLoading();
         initData();
         gridLayoutManager = new GridLayoutManager(requireActivity(), 3);
-        documentAdapter = new DocumentAdapter(requireActivity(), fileModels);
+        documentAdapter = new DocumentAdapter(requireActivity(), fileModels, this);
         rcv_document.setAdapter(documentAdapter);
         return view;
     }
@@ -99,5 +105,29 @@ public class DocumentFragment extends Fragment {
     private void hideLoading() {
         progressBar.setVisibility(View.GONE);
         rcv_document.setVisibility(View.VISIBLE);
+    }
+
+    @Override
+    public void onItemClick(FileModel fileModel, int position) {
+        if (fileModel.getType() == HomeItemType.PDF) {
+//            (activity as BaseActivity).addFragment(
+//                    PdfViewerFragment.newInstance(it),
+//                    R.id.main_view,
+//                    "PdfViewerFragment"
+//            )
+        } else if (FileKit.instance().isSupport(fileModel.getName())) {
+            Intent intent = new Intent(requireContext(), AppActivity.class);
+            intent.putExtra(MainConstant.INTENT_FILED_FILE_PATH, fileModel.getPath());
+            intent.putExtra(MainConstant.INTENT_FILED_FILE_NAME, fileModel.getName());
+
+            Bundle bundle = new Bundle();
+            bundle.putSerializable(MainConstant.INTENT_FILED_FILE, fileModel);
+            intent.putExtras(bundle);
+
+            startActivityForResult(intent, Activity.RESULT_FIRST_USER);
+        } else {
+            Toast.makeText(requireContext(), getString(R.string.not_support_file), Toast.LENGTH_SHORT)
+                    .show();
+        }
     }
 }

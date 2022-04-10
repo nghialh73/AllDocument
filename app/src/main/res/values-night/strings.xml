@@ -3,4 +3,6 @@
     <string name="click_to_search">Click to seach</string>
     <string name="title_ok">OK</string>
     <string name="title_cancel">Cancel</string>
+    <string name="success">Success</string>
+    <string name="error">Error</string>
 </resources>

@@ -29,6 +29,7 @@
             </intent-filter>
         </activity>
         <activity android:name=".ui.document.DocumentActivity"/>
+        <activity android:name=".library.officereader.AppActivity"/>
     </application>
 
 </manifest>

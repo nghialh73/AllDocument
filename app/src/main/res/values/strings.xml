@@ -55,6 +55,20 @@
     <string name="pg_slideshow_pageup">Page Up</string>
     <string name="pg_slideshow_pagedown">Page Down</string>
 
+    <!--      file list         -->
+    <string name="file_toolsbar_create_folder">Create folder</string>
+    <string name="file_toolsbar_rename">Rename</string>
+    <string name="file_toolsbar_copy">Copy</string>
+    <string name="file_toolsbar_cut">Cut</string>
+    <string name="file_toolsbar_paste">Paste</string>
+    <string name="file_toolsbar_delete">Delete</string>
+    <string name="file_toolsbar_share">Share</string>
+    <string name="file_toolsbar_sort">Sort</string>
+    <string name="file_toolsbar_print">Printer</string>
+    <string name="file_toolsbar_mark_star">Mark</string>
+    <string name="file_toolsbar_unmark_star">UnMark</string>
+    <string name="file_message_empty_directory">Empty Folder</string>
+
     <!--      application         -->
     <string name="app_toolsbar_hyperlink">Goto</string>
     <string name="app_toolsbar_find">Find</string>
@@ -78,4 +92,57 @@
     <string name="app_searchbar_failed">iOffice Reader cannot find the data you are searching for</string>
     <string name="app_searchbar_reachedBegin">iOffice Reader has reached the beginning of the document</string>
     <string name="app_searchbar_reachedEnd">iOffice Reader has reached the end of the document</string>
+
+    <string name="title_activity_photo_editor">PhotoEditorActivity</string>
+    <string name="done">Done</string>
+    <string name="save">Save</string>
+    <string name="clear_all">Clear All</string>
+    <string name="camera">Camera</string>
+    <string name="gallery">Gallery</string>
+    <string name="upload_dialog_title">Upload Image</string>
+    <string name="upload_picker_title">Select Picture</string>
+    <string name="directory_create_fail">Failed to create directory</string>
+    <string name="access_media_permissions_msg">To attach photos, we need to access media on your device</string>
+    <string name="continue_txt">Continue</string>
+    <string name="not_now">NOT NOW</string>
+    <string name="media_access_denied_msg">You denied storage access, no photos will be added.</string>
+
+    <string name="ic_close">"\ue918"</string>
+    <string name="ic_text">"\ue945"</string>
+    <string name="ic_draw">""\ue944</string>
+    <string name="ic_images">"\ue949"</string>
+    <string name="ic_save">"\ue946"</string>
+    <string name="ic_clear_all">"\ue947"</string>
+    <string name="ic_continue">"\ue948"</string>
+    <string name="ic_delete">"\ue92c"</string>
+    <string name="choose_from_gallery">Choose From Gallery</string>
+    <string name="choose_from_camera">Choose From Camera</string>
+    <string name="undo">Undo</string>
+    <string name="erase">Erase</string>
+    <string name="favourite_file">Favourite Files</string>
+    <string name="goto_page">Go to Page</string>
+    <string name="saving">Saving…</string>
+    <string name="success">Success</string>
+    <string name="error">Error</string>
+
+    <string name="dialog_encoding_title">Text Encoding</string>
+    <string name="dialog_folder_name">Folder Name</string>
+    <string name="dialog_create_folder_error">Failed to create folder</string>
+    <string name="dialog_file_name">File Name</string>
+    <string name="dialog_file_rename_error">Failed to rename file</string>
+    <string name="dialog_name_error">%s already exists.</string>
+    <string name="dialog_delete_file">Are you sure you want to delete the selected item(s)?</string>
+    <string name="dialog_move_file_error">You can not move or copy a folder into itself.</string>
+    <string name="dialog_overwrite_file">Do you want to overwrite it?</string>
+    <string name="dialog_error_title">Error</string>
+    <string name="dialog_descending">Descending</string>
+    <string name="dialog_ascending">Ascending</string>
+    <string name="dialog_insufficient_memory">Unable to complete operation due to insufficient memory</string>
+    <string name="dialog_system_crash_error">System crash, terminate running</string>
+    <string name="dialog_format_error">File format error</string>
+    <string name="dialog_old_document">The document is too old - Office 95 or older, which is not supported</string>
+    <string name="dialog_parse_error">File parsing error</string>
+    <string name="dialog_rtf_file">The document is really a RTF file, which is not supported</string>
+    <string name="not_support_file">Not support this file.</string>
+    <string name="load_file_error">Load file error. Please try again!</string>
 </resources>

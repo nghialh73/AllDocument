@@ -5,10 +5,9 @@
     android:id="@+id/parent"
     android:layout_width="match_parent"
     android:layout_height="match_parent"
-    android:fitsSystemWindows="true"
-    tools:context=".view.editImageScreenShot.PhotoEditorActivity">
+    android:fitsSystemWindows="true">
 
-    <com.pub.allviewer.widget.SlidingUpPanelLayout
+    <com.example.alldocument.ui.view.SlidingUpPanelLayout
         android:id="@+id/sliding_layout"
         android:layout_width="match_parent"
         android:layout_height="match_parent"
@@ -311,6 +310,6 @@
 
         </RelativeLayout>
 
-    </com.pub.allviewer.widget.SlidingUpPanelLayout>
+    </com.example.alldocument.ui.view.SlidingUpPanelLayout>
 
 </RelativeLayout>

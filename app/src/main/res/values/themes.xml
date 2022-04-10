@@ -13,4 +13,31 @@
         <item name="android:statusBarColor" tools:targetApi="l">?attr/colorPrimaryVariant</item>
         <!-- Customize your theme here. -->
     </style>
+    <style name="EditText">
+        <item name="android:singleLine">true</item>
+        <item name="colorControlNormal">#FFFFFF</item>
+        <item name="colorControlActivated">#FFFFFF</item>
+        <item name="android:textColorPrimary">#FFFFFF</item>
+        <item name="android:textSize">14sp</item>
+    </style>
+
+    <style name="title_background_drawable_vertical">
+        <item name="android:background">@drawable/sys_title_bg_vertical</item>
+    </style>
+    <style name="title_background_drawable_horizontal">
+        <item name="android:background">@drawable/sys_title_bg_horizontal</item>
+    </style>
+    <style name="title_background_vertical" parent="android:Theme">
+        <item name="android:windowTitleBackgroundStyle">@style/title_background_drawable_vertical</item>
+    </style>
+    <style name="title_background_horizontal" parent="android:Theme">
+        <item name="android:windowTitleBackgroundStyle">@style/title_background_drawable_horizontal</item>
+    </style>
+
+    <style name="AppTheme.AppBarOverlay" parent="ThemeOverlay.AppCompat.Dark.ActionBar" />
+
+    <style name="AppTheme.PopupOverlay" parent="ThemeOverlay.AppCompat.Light" />
+    <style name="ContentLoadingProgress">
+        <item name="colorAccent">@color/white</item>
+    </style>
 </resources>

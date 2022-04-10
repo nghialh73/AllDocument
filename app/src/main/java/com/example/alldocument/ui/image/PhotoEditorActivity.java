@@ -32,7 +32,13 @@ import androidx.recyclerview.widget.LinearLayoutManager;
 import androidx.recyclerview.widget.RecyclerView;
 import androidx.viewpager.widget.ViewPager;
 
+import com.ahmedadeltito.photoeditorsdk.BrushDrawingView;
+import com.ahmedadeltito.photoeditorsdk.OnPhotoEditorSDKListener;
+import com.ahmedadeltito.photoeditorsdk.PhotoEditorSDK;
+import com.ahmedadeltito.photoeditorsdk.SingleMediaScanner;
+import com.ahmedadeltito.photoeditorsdk.ViewType;
 import com.example.alldocument.R;
+import com.example.alldocument.ui.view.SlidingUpPanelLayout;
 import com.viewpagerindicator.PageIndicator;
 
 import java.io.File;

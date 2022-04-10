@@ -12,6 +12,7 @@ import androidx.recyclerview.widget.RecyclerView;
 
 import com.example.alldocument.R;
 import com.example.alldocument.data.model.FileModel;
+import com.example.alldocument.data.model.HomeItem;
 import com.example.alldocument.utils.TimeUtils;
 
 import java.util.List;
@@ -21,12 +22,14 @@ import butterknife.ButterKnife;
 
 public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.DocumentViewHolder> {
 
-    List<FileModel> items;
-    Context context;
+    private List<FileModel> items;
+    private Context context;
+    private DocumentAdapterOnItemClickListener mListener;
 
-    public DocumentAdapter(Context context, List<FileModel> fileModels) {
+    public DocumentAdapter(Context context, List<FileModel> fileModels, DocumentAdapterOnItemClickListener listener) {
         this.items = fileModels;
         this.context = context;
+        this.mListener = listener;
     }
 
     @NonNull
@@ -38,8 +41,13 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.Docume
 
     @Override
     public void onBindViewHolder(@NonNull DocumentAdapter.DocumentViewHolder holder, int position) {
-        holder.bindView(items.get(position), position);
-
+        holder.bindView(items.get(holder.getAdapterPosition()), position);
+        holder.itemView.setOnClickListener(new View.OnClickListener() {
+            @Override
+            public void onClick(View view) {
+                mListener.onItemClick(items.get(holder.getAdapterPosition()), holder.getAdapterPosition());
+            }
+        });
     }
 
     @Override
@@ -64,7 +72,7 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.Docume
     class DocumentViewHolder extends RecyclerView.ViewHolder {
         @BindView(R.id.img_icon)
         AppCompatImageView icon;
-//        @BindView(R.id.img_favorite)
+        //        @BindView(R.id.img_favorite)
 //        AppCompatImageView imgFavorite;
         @BindView(R.id.tv_name)
         AppCompatTextView tvName;
@@ -95,5 +103,9 @@ public class DocumentAdapter extends RecyclerView.Adapter<DocumentAdapter.Docume
 //                }
 //            });
         }
+    }
+
+    public interface DocumentAdapterOnItemClickListener {
+        public void onItemClick(FileModel fileModel, int position);
     }
 }

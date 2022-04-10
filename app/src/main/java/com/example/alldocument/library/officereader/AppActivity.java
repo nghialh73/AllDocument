@@ -16,6 +16,7 @@ import java.util.List;
 import com.example.alldocument.data.model.FileModel;
 import com.example.alldocument.data.model.HomeItemType;
 import com.example.alldocument.ui.image.PhotoEditorActivity;
+import com.example.alldocument.ui.office.ControlOfficeFragment;
 import com.jaeger.library.StatusBarUtil;
 import com.example.alldocument.R;
 import com.example.alldocument.library.common.IOfficeToPicture;
@@ -98,7 +99,7 @@ import androidx.fragment.app.FragmentActivity;
  * <p>
  */
 
-public class AppActivity extends FragmentActivity implements IMainFrame {
+public class AppActivity extends FragmentActivity implements IMainFrame, ControlOfficeFragment.GoToPageListener {
     /**
      * 构造器
      */
@@ -829,15 +830,8 @@ public class AppActivity extends FragmentActivity implements IMainFrame {
         }*/
         FileModel fileModel = (FileModel) getIntent().getExtras().getSerializable(MainConstant.INTENT_FILED_FILE);
         assert fileModel != null;
-        addFragment(new ControlOfficeFragment(fileModel, control.getView(), pageNumber -> {
-            // TODO
-            if (fileModel.getType() == HomeItemType.WORD || fileModel.getType() == HomeItemType.TEXT) {
-                ((Word) control.getView()).showPage(pageNumber, EventConstant.WP_SHOW_PAGE);
-            } else if (fileModel.getType() == HomeItemType.POWER_POINT) {
-                ((Presentation) control.getView()).showSlide(pageNumber, true);
-            }
-//            control.se
-        }), android.R.id.content, "ControlFragment");
+        ControlOfficeFragment fragment = ControlOfficeFragment.newInstance(fileModel);
+        addFragment(fragment, android.R.id.content, "ControlFragment");
     }
 
     /**
@@ -1345,4 +1339,12 @@ public class AppActivity extends FragmentActivity implements IMainFrame {
         }
     }
 
+    @Override
+    public void goToPage(int pageNumber, HomeItemType type) {
+        if (type == HomeItemType.WORD || type == HomeItemType.TEXT) {
+            ((Word) control.getView()).showPage(pageNumber, EventConstant.WP_SHOW_PAGE);
+        } else if (type == HomeItemType.POWER_POINT) {
+            ((Presentation) control.getView()).showSlide(pageNumber, true);
+        }
+    }
 }
