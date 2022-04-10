@@ -4,6 +4,7 @@
     <option name="filePathToZoomLevelMap">
       <map>
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable-v24/above_shadow.xml" value="0.1" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/above_shadow.xml" value="0.1765" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/background_color_all.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/background_color_doc.xml" value="0.25833333333333336" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/background_color_excel.xml" value="0.25833333333333336" />
@@ -16,7 +17,10 @@
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/bg_button_draw_pic.xml" value="0.1" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/fading_shadow.xml" value="0.1" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/ic_add.xml" value="0.1" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/ic_close.xml" value="0.1125" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/ic_goto_page.xml" value="0.1125" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/ic_screen_short.xml" value="0.1" />
+        <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/ic_share.xml" value="0.1125" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/drawable/rounded_border_text_view.xml" value="0.1" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/activity_document.xml" value="0.10104166666666667" />
         <entry key="..\:/Users/UFUS/Documents/Project/Baduno/AllDocument/app/src/main/res/layout/activity_main.xml" value="0.16576086956521738" />

@@ -37,7 +37,7 @@ public class CalloutToolsbar extends AToolsbar
     private void init()
     {
         // 标签
-        addButton(R.drawable.app_back, R.drawable.app_back_disable, R.string.app_toolsbar_back,
+        addButton(R.drawable.ic_back, R.drawable.app_back_disable, R.string.app_toolsbar_back,
             EventConstant.APP_BACK_ID, true);
 
         // 画笔

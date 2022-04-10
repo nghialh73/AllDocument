@@ -344,7 +344,6 @@ public class AppActivity extends FragmentActivity implements IMainFrame, Control
         dbService = new DBService(getApplicationContext());
 
         filePath = intent.getStringExtra(MainConstant.INTENT_FILED_FILE_PATH);
-        // 文件关联打开文件
         if (filePath == null) {
             this.filePath = intent.getDataString();
             int index = getFilePath().indexOf(":");
@@ -354,7 +353,6 @@ public class AppActivity extends FragmentActivity implements IMainFrame, Control
             filePath = Uri.decode(filePath);
         }
 
-        // 显示打开文件名称
         int index = filePath.lastIndexOf(File.separator);
         if (index > 0) {
             setTitle(filePath.substring(index + 1));
@@ -363,7 +361,6 @@ public class AppActivity extends FragmentActivity implements IMainFrame, Control
         }
 
         boolean isSupport = FileKit.instance().isSupport(filePath);
-        //写入本地数据库
         if (isSupport) {
             dbService.insertRecentFiles(MainConstant.TABLE_RECENT, filePath);
         }

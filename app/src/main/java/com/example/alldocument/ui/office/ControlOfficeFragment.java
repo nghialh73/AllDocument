@@ -66,12 +66,12 @@ public class ControlOfficeFragment extends Fragment implements View.OnClickListe
     AppCompatTextView textGoPage;
     @BindView(R.id.control_floating_button)
     FloatingActionButton floatingButton;
-    @BindView(R.id.control_floating_button_favourite)
-    FloatingActionButton floatingButtonFavorite;
+//    @BindView(R.id.control_floating_button_favourite)
+//    FloatingActionButton floatingButtonFavorite;
     @BindView(R.id.control_floating_button_share)
     FloatingActionButton floatingButtonShare;
-    @BindView(R.id.control_floating_button_screen_short)
-    FloatingActionButton floatingButtonScreenShort;
+//    @BindView(R.id.control_floating_button_screen_short)
+//    FloatingActionButton floatingButtonScreenShort;
     @BindView(R.id.control_layout_control)
     ConstraintLayout layoutControl;
 
@@ -99,9 +99,6 @@ public class ControlOfficeFragment extends Fragment implements View.OnClickListe
         ButterKnife.bind(this, view);
         initData();
         initView();
-//        gridLayoutManager = new GridLayoutManager(requireActivity(), 3);
-//        documentAdapter = new DocumentAdapter(requireActivity(), fileModels);
-//        rcv_document.setAdapter(documentAdapter);
         return view;
     }
 
@@ -118,9 +115,9 @@ public class ControlOfficeFragment extends Fragment implements View.OnClickListe
             textGoPage.setVisibility(View.GONE);
         }
         floatingButton.setOnClickListener(this);
-        floatingButtonFavorite.setOnClickListener(this);
+        //floatingButtonFavorite.setOnClickListener(this);
         floatingButtonShare.setOnClickListener(this);
-        floatingButtonScreenShort.setOnClickListener(this);
+        //floatingButtonScreenShort.setOnClickListener(this);
         floatingBtnGoPage.setOnClickListener(this);
     }
 
@@ -151,38 +148,38 @@ public class ControlOfficeFragment extends Fragment implements View.OnClickListe
                     floatingButton.setImageDrawable(requireActivity().getResources().getDrawable(R.drawable.ic_close));
                 }
                 break;
-            case R.id.control_floating_button_favourite:
-                if (layoutControl.getVisibility() == View.VISIBLE) {
-                    layoutControl.setVisibility(View.GONE);
-                    floatingButton.setImageDrawable(requireActivity().getResources().getDrawable(R.drawable.ic_add));
-                } else {
-                    layoutControl.setVisibility(View.VISIBLE);
-                    floatingButton.setImageDrawable(requireActivity().getResources().getDrawable(R.drawable.ic_close));
-                }
-                fileModel.setFavorite(fileModel.getFavorite() == 0 ? 1 : 0);
-                if (fileModel.getFavorite() == 1)
-                    floatingButtonFavorite.setImageDrawable(requireActivity().getResources().getDrawable(R.drawable.ic_favorite));
-                else
-                    floatingButtonFavorite.setImageDrawable(requireActivity().getResources().getDrawable(R.drawable.ic_favorite_none));
-                break;
-            case R.id.control_floating_button_screen_short:
-                if (layoutControl.getVisibility() == View.VISIBLE) {
-                    layoutControl.setVisibility(View.GONE);
-                    floatingButton.setImageDrawable(requireActivity().getResources().getDrawable(R.drawable.ic_add));
-                } else {
-                    layoutControl.setVisibility(View.VISIBLE);
-                    floatingButton.setImageDrawable(requireActivity().getResources().getDrawable(R.drawable.ic_close));
-                }
-
-                floatingButton.setVisibility(View.GONE);
-                Bitmap imageBitmap = takeScreenshot();
-                if (imageBitmap == null) {
-                    Toast.makeText(requireContext(), getString(R.string.error), Toast.LENGTH_SHORT).show();
-                    return;
-                }
-                showCropView(imageBitmap);
-                floatingButton.setVisibility(View.VISIBLE);
-                break;
+//            case R.id.control_floating_button_favourite:
+//                if (layoutControl.getVisibility() == View.VISIBLE) {
+//                    layoutControl.setVisibility(View.GONE);
+//                    floatingButton.setImageDrawable(requireActivity().getResources().getDrawable(R.drawable.ic_add));
+//                } else {
+//                    layoutControl.setVisibility(View.VISIBLE);
+//                    floatingButton.setImageDrawable(requireActivity().getResources().getDrawable(R.drawable.ic_close));
+//                }
+//                fileModel.setFavorite(fileModel.getFavorite() == 0 ? 1 : 0);
+//                if (fileModel.getFavorite() == 1)
+//                    floatingButtonFavorite.setImageDrawable(requireActivity().getResources().getDrawable(R.drawable.ic_favorite));
+//                else
+//                    floatingButtonFavorite.setImageDrawable(requireActivity().getResources().getDrawable(R.drawable.ic_favorite_none));
+//                break;
+//            case R.id.control_floating_button_screen_short:
+//                if (layoutControl.getVisibility() == View.VISIBLE) {
+//                    layoutControl.setVisibility(View.GONE);
+//                    floatingButton.setImageDrawable(requireActivity().getResources().getDrawable(R.drawable.ic_add));
+//                } else {
+//                    layoutControl.setVisibility(View.VISIBLE);
+//                    floatingButton.setImageDrawable(requireActivity().getResources().getDrawable(R.drawable.ic_close));
+//                }
+//
+//                floatingButton.setVisibility(View.GONE);
+//                Bitmap imageBitmap = takeScreenshot();
+//                if (imageBitmap == null) {
+//                    Toast.makeText(requireContext(), getString(R.string.error), Toast.LENGTH_SHORT).show();
+//                    return;
+//                }
+//                showCropView(imageBitmap);
+//                floatingButton.setVisibility(View.VISIBLE);
+//                break;
             case R.id.control_floating_button_share:
                 if (layoutControl.getVisibility() == View.VISIBLE) {
                     layoutControl.setVisibility(View.GONE);
@@ -260,7 +257,7 @@ public class ControlOfficeFragment extends Fragment implements View.OnClickListe
                 dialogInterface.cancel();
             }
         });
-        builder.setNegativeButton(requireContext().getString(R.string.goto_page), new DialogInterface.OnClickListener() {
+        builder.setNegativeButton(requireContext().getString(R.string.title_cancel), new DialogInterface.OnClickListener() {
             @Override
             public void onClick(DialogInterface dialogInterface, int i) {
                 dialogInterface.cancel();

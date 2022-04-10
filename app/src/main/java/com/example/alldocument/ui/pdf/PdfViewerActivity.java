@@ -34,7 +34,6 @@ public class PdfViewerActivity extends AppCompatActivity implements ControlOffic
     @BindView(R.id.pdfView)
     PDFView pdfView;
     FileModel filePdf;
-    private DocumentFragment documentFragment;
 
     @Override
     protected void onCreate(Bundle savedInstanceState) {
@@ -102,12 +101,6 @@ public class PdfViewerActivity extends AppCompatActivity implements ControlOffic
 //        fragmentTransaction.commit();
     }
 
-    @Override
-    public boolean onCreateOptionsMenu(Menu menu) {
-        MenuInflater inflater = getMenuInflater();
-        return true;
-    }
-
     private void setupToolbar() {
         String name = getIntent().getExtras().getString(filePdf.getName());
         setSupportActionBar(mToolbar);
@@ -115,6 +108,7 @@ public class PdfViewerActivity extends AppCompatActivity implements ControlOffic
         ActionBar actionBar = getSupportActionBar();
         actionBar.setHomeButtonEnabled(true);
         actionBar.setDisplayHomeAsUpEnabled(true);
+        actionBar.setDisplayShowHomeEnabled(true);
     }
 
     @Override
